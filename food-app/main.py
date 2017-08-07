@@ -30,8 +30,16 @@ loader = jinja2.FileSystemLoader(template_dir)
 class MainHandler(webapp2.RequestHandler):
     def get(self):
 
-        self.response.write('Hello world!')
+        self.response.write('Hello world!')\
+
+class SecondHandler(webapp2.RequestHandler):
+    def get(self):
+
+
+
+
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/', MainHandler),
+    ('/second', SecondHandler)
 ], debug=True)
