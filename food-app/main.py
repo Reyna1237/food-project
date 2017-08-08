@@ -40,9 +40,6 @@ class SecondHandler(webapp2.RequestHandler):
         self.response.write('Hello!')
 
 
-
-
-
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/second', SecondHandler)
