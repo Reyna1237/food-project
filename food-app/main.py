@@ -41,7 +41,8 @@ class SecondHandler(webapp2.RequestHandler):
         self.places = places
         self.portions = portions
     def post(self):
-        print(self.name)
+        self.response.write("hello")
+
 
 
 app = webapp2.WSGIApplication([
