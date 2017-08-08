@@ -35,9 +35,13 @@ class MainHandler(webapp2.RequestHandler):
 
 class SecondHandler(webapp2.RequestHandler):
     """This is ganna give the flavors and places to eat"""
-    def __init__(self, name, ):
-
-        self.response.write('Hello!')
+    def __init__(self, name, flavors, places, portions):
+        self.name = name
+        self.flavors = flavors
+        self.places = places
+        self.portions = portions
+    def post(self):
+        print(self.name)
 
 
 app = webapp2.WSGIApplication([
