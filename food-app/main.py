@@ -34,7 +34,7 @@ class MainHandler(webapp2.RequestHandler):
         self.response.write(template.render())
 
     def post(self):
-        r_template = jinja_environment.get_template('templates/result.html')
+        r_template = jinja_environment.get_template('templates/secondpd.html')
         username = self.request.get("username")
         userlocation = self.request.get("userlocation")
         user_info = {"username" : username, "userlocation":userlocation}
