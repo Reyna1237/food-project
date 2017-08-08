@@ -30,7 +30,8 @@ loader = jinja2.FileSystemLoader(template_dir)
 class MainHandler(webapp2.RequestHandler):
     def get(self):
 
-        self.response.write('Hello world!')
+        template = jinja_environment.get_template('templates/main.html')
+        self.response.write(template.render())
 
 class SecondHandler(webapp2.RequestHandler):
     def get(self):
