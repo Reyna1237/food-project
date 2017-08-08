@@ -33,28 +33,27 @@ class MainHandler(webapp2.RequestHandler):
         template = jinja_environment.get_template('templates/main.html')
         self.response.write(template.render())
 
-    def post(self):
-        r_template = jinja_environment.get_template('templates/secondpd.html')
-        username = self.request.get("username")
-        userlocation = self.request.get("userlocation")
-        user_info = {"username" : username, "userlocation":userlocation}
-        self.response.write(r_template.render(user_info))
-
 class SecondHandler(webapp2.RequestHandler):
 #This is ganna give the flavors and places to eat"""
     def get(self):
         template = jinja_environment.get_template('templates/secondpd.html')
-        self.response.write(template.render())
+        username = self.request.get("username")
+        userlocation = self.request.get("userlocation")
+        user_info = {"username" : username, "userlocation":userlocation}
+        self.response.write(template.render(user_info))
 
     def post(self):
         template = jinja_environment.get_template('templates/secondpd.html')
-        name = self.request.get("name")
+        name = self.request.get("username")
+        location = self.request.get("userlocation")
         flavors = self.request.get("flavors")
         places = self.request.get("places")
         portions = self.request.get("portions")
         #self.response.write("Hello " + name + " you have chosen " + flavors + " and based on your location we have found this place near you, " + places + ", and the amount of your portion is " + portions + ".")
         self.response.write(template.render())
-        self.response.write("Hello " + name + " you have chosen " + flavors + " and based on your location we have found this place near you, " + places + ", and the amount of your portion is " + portions + ".")
+
+        self.response.write("Your name is: <strong> " + name + "</strong> Your location is: <strong> " + location + "</strong> <br>")
+        self.response.write("Hello " + name + ", you have chosen " + flavors + " and based on your location we have found this place near you, " + places + ", and the amount of your portion is " + portions + ".")
 
 
 app = webapp2.WSGIApplication([
