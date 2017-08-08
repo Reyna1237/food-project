@@ -33,7 +33,9 @@ class MainHandler(webapp2.RequestHandler):
         self.response.write('Hello world!')
 
 class SecondHandler(webapp2.RequestHandler):
-    def get(self):
+    """This is ganna give the flavors and places to eat"""
+    def __init__(self, name, ):
+
         self.response.write('Hello!')
 
 
