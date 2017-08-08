@@ -41,16 +41,19 @@ class MainHandler(webapp2.RequestHandler):
         self.response.write(r_template.render(user_info))
 
 class SecondHandler(webapp2.RequestHandler):
-    """This is ganna give the flavors and places to eat"""
+#This is ganna give the flavors and places to eat"""
     def get(self):
         template = jinja_environment.get_template('templates/secondpd.html')
+        self.response.write(template.render())
 
     def post(self):
+        template = jinja_environment.get_template('templates/secondpd.html')
         name = self.request.get("name")
         flavors = self.request.get("flavors")
         places = self.request.get("places")
         portions = self.request.get("portions")
         self.response.write("You chose "+ name + "at" +places+ " which is" + portions+ " and" + flavors)
+        self.response.write(template.render())
 
 
 
