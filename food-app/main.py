@@ -35,6 +35,9 @@ class MainHandler(webapp2.RequestHandler):
 
 class SecondHandler(webapp2.RequestHandler):
     """This is ganna give the flavors and places to eat"""
+    def get(self):
+        template = jinja_environment.get_template('templates/secondpd.html')
+
     def __init__(self, name, flavors, places, portions):
         self.name = name
         self.flavors = flavors
