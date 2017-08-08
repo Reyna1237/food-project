@@ -33,6 +33,13 @@ class MainHandler(webapp2.RequestHandler):
         template = jinja_environment.get_template('templates/main.html')
         self.response.write(template.render())
 
+    def post(self):
+        r_template = jinja_environment.get_template('templates/result.html')
+        username = self.request.get("username")
+        userlocation = self.request.get("userlocation")
+        user_info = {"username" : username, "userlocation":userlocation}
+        self.response.write(r_template.render(user_info))
+
 class SecondHandler(webapp2.RequestHandler):
     """This is ganna give the flavors and places to eat"""
     def get(self):
