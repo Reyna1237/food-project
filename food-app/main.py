@@ -52,9 +52,9 @@ class SecondHandler(webapp2.RequestHandler):
         flavors = self.request.get("flavors")
         places = self.request.get("places")
         portions = self.request.get("portions")
-        self.response.write("You chose "+ name + "at" +places+ " which is" + portions+ " and" + flavors)
+        #self.response.write("Hello " + name + " you have chosen " + flavors + " and based on your location we have found this place near you, " + places + ", and the amount of your portion is " + portions + ".")
         self.response.write(template.render())
-
+        self.response.write("Hello " + name + " you have chosen " + flavors + " and based on your location we have found this place near you, " + places + ", and the amount of your portion is " + portions + ".")
 
 
 app = webapp2.WSGIApplication([
