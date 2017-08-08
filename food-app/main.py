@@ -38,13 +38,12 @@ class SecondHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/secondpd.html')
 
-    def __init__(self, name, flavors, places, portions):
-        self.name = name
-        self.flavors = flavors
-        self.places = places
-        self.portions = portions
     def post(self):
-        self.response.write("hello")
+        name = self.request.get("name")
+        flavors = self.request.get("flavors")
+        places = self.request.get("places")
+        portions = self.request.get("portions")
+        self.response.write("You chose "+ name + "at" +places+ " which is" + portions+ " and" + flavors)
 
 
 
