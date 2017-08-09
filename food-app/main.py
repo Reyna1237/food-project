@@ -53,7 +53,7 @@ class SecondHandler(webapp2.RequestHandler):
         self.response.write(template.render())
 
         self.response.write("Your name is: <strong> " + name + "</strong> Your location is: <strong> " + location + "</strong> <br>")
-        self.response.write("Hello " + name + ", you have chosen " + flavors + " and based on your location we have found this place near you, " + places + ", and the amount of your portion is " + portions + ".")
+        self.response.write("Hello " + name + ", you have chosen " + flavors + " as the flavor you are craving and based on your location we have found a place that matches what you want, " + places + ", and the amount of your portion is " + portions + ".")
 
 
 app = webapp2.WSGIApplication([
