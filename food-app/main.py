@@ -58,13 +58,33 @@ class SecondHandler(webapp2.RequestHandler):
         flavors_list = []
         if flavors !="":
             flavors_list.append(flavors)
+        if flavors_2 !="":
+            flavors_list.append(flavors_2)
+        if flavors_3 !="":
+            flavors_list.append(flavors_3)
+        if flavors_4 !="":
+            flavors_list.append(flavors_4)
+        if flavors_5 !="":
+            flavors_list.append(flavors_5)
+
+        #for flavor in flavors_list:
+        if len(flavors_list) == 0:
+            flavors_string = "you didnt choose any flavors<br>"
+        elif len(flavors_list) == 1:
+            flavors_string = "You have chosen {0}.<br>".format(flavors_list[0])
+        else:
+            base_flavor_string = "You have chosen the following flavors: "
+            flavors_string = ""
+            for flavors in flavors_list:
+                flavors_string += flavors + ", "
+            flavors_string = base_flavor_string + flavors_string[0:-2] + ".<br>"
         #self.response.write("Hello " + name + " you have chosen " + flavors + " and based on your location we have found this place near you, " + places + ", and the amount of your portion is " + portions + ".")
         logging.info(flavors_list)
         self.response.write(template.render())
-
+        self.response.write(flavors_string)
         self.response.write("Your name is: <strong> " + name + "</strong> Your location is: <strong> " + location + "</strong> <br>")
 
-        self.response.write("Hello " + name + ", you have chosen " + flavors + ", " + flavors_2 +  flavors_3 +  flavors_4 +  flavors_5 + " as the flavor you are craving and based on your location we have found a place that matches what you want, " + places + ", and the amount of your portion is " + portions + ".")
+        self.response.write("Hello " + name + ", based on your choice in flavors and location we have found a place that matches what you want, " + places + ", and the amount of your portion is " + portions + ".")
 
 
 app = webapp2.WSGIApplication([
