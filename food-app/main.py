@@ -34,10 +34,10 @@ class MainHandler(webapp2.RequestHandler):
         template = jinja_environment.get_template('templates/main.html')
         self.response.write(template.render())
 
-    def post(self):
+    #def post(self):
 
 
-class SecondHandler(webapp2.RequestHandler):
+class SecondHandler(webapp2.RequestHandler):    
 #This is ganna give the flavors and places to eat"""
     def get(self):
         template = jinja_environment.get_template('templates/secondpd.html')
