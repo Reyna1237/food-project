@@ -6,23 +6,38 @@
     <title>Choose your flavors</title>
   </head>
   <style>
-  #map {
-    height:400px;
-    Width: 100%;
+  h1 {
+    font-family: Avant Garde,Avantgarde,Century Gothic,CenturyGothic,AppleGothic,sans-serif;
+  	font-size: 52px;
+  	font-style: normal;
+  	font-variant: normal;
+  	font-weight: 500;
+    color: #fff9c4;
+    text-align:center;
   }
-  body { background-color: #82b1ff}
+
+  #map {
+    position: absolute;
+    top:200px;
+    right: 0;
+    height:350px;
+    Width: 50%;
+  }
+  body {
+    background: linear-gradient( #0097a7, #e0f7fa )
+  }
   </style>
   <h1>Pick from the following options to find what food recommedation would be best for you!</h1>
 
   <body>
     <form method="post">
-          <h2> What flavors are you craving?</h2>
-      <p>Select all that apply.</p>
-      <input type = "checkbox" name= "flavors" value= "Sweet"/> Sweet <br/>
-      <input type = "checkbox" name= "flavors_2" value= "Bitter"/> Bitter <br/>
-      <input type = "checkbox" name= "flavors_3" value= "Salty"/> Salty <br/>
-      <input type = "checkbox" name= "flavors_4" value= "Sour"/> Sour <br>
-      <input type = "checkbox" name= "flavors_5" value= "Spicy"/>Spicy<br>
+          <h2> What flavor are you craving?</h2>
+      <p>Select one.</p>
+      <input type = "radio" name= "flavors" value= "Sweet"/> Sweet <br/>
+      <input type = "radio" name= "flavors_2" value= "Bitter"/> Bitter <br/>
+      <input type = "radio" name= "flavors_3" value= "Salty"/> Salty <br/>
+      <input type = "radio" name= "flavors_4" value= "Sour"/> Sour <br>
+      <input type = "radio" name= "flavors_5" value= "Spicy"/>Spicy<br>
 
 
           <h2>How hungry are you?</h2>
@@ -78,13 +93,14 @@ function initMap() {
   }
 }
 
-function nextFunction(pos,map){
+function nextFunction(pos,map, ){
   var service = new google.maps.places.PlacesService(map);
   console.log(pos);
   service.nearbySearch({
     location: pos,
     radius: 5000,
-    type: ['restaurant']
+    type: ['restaurant'],
+    keyword: ['Mexican']
   }, callback);
   console.log(pos);
 }

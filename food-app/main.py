@@ -37,7 +37,7 @@ class MainHandler(webapp2.RequestHandler):
     #def post(self):
 
 
-class SecondHandler(webapp2.RequestHandler):    
+class SecondHandler(webapp2.RequestHandler):
 #This is ganna give the flavors and places to eat"""
     def get(self):
         template = jinja_environment.get_template('templates/secondpd.html')
@@ -84,10 +84,10 @@ class SecondHandler(webapp2.RequestHandler):
         #self.response.write("Hello " + name + " you have chosen " + flavors + " and based on your location we have found this place near you, " + places + ", and the amount of your portion is " + portions + ".")
         logging.info(flavors_list)
         self.response.write(template.render())
-        self.response.write(flavors_string)
+        self.response.write("<br><br>"+flavors_string)
         self.response.write("Your name is: <strong> " + name + "</strong> Your favorite color is: <strong> " + color + "</strong> <br>")
 
-        self.response.write("Hello " + name + ", based on your choice in flavors we have found a place that matches what you want, " + places + ", and the amount of your portion is " + portions + ".")
+        self.response.write("Hello " + name + ", based on your choice in flavors we have found a place that matches what you want, " + places + ", and the amount of your portion is " + portions + ".<br><br>")
 
 
 app = webapp2.WSGIApplication([
