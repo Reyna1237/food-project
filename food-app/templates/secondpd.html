@@ -30,14 +30,15 @@
   <h1>Pick from the following options to find what food recommedation would be best for you!</h1>
 
   <body>
+
     <form method="post">
           <h2> What flavor are you craving?</h2>
       <p>Select one.</p>
-      <input type = "radio" name= "flavors" value= "Sweet"/> Sweet <br/>
-      <input type = "radio" name= "flavors_2" value= "Bitter"/> Bitter <br/>
-      <input type = "radio" name= "flavors_3" value= "Salty"/> Salty <br/>
-      <input type = "radio" name= "flavors_4" value= "Sour"/> Sour <br>
-      <input type = "radio" name= "flavors_5" value= "Spicy"/>Spicy<br>
+      <input type = "radio" name= "flavors" value= "American"/> Sweet <br/>
+      <input type = "radio" name= "flavors_2" value= "Italian"/> Bitter <br/>
+      <input type = "radio" name= "flavors_3" value= "Mexican"/> Salty <br/>
+      <input type = "radio" name= "flavors_4" value= "Chinese"/> Sour <br>
+      <input type = "radio" name= "flavors_5" value= "Indian"/>Spicy<br>
 
 
           <h2>How hungry are you?</h2>
@@ -60,8 +61,12 @@
     <script>
     var map, infoWindow;
     var pos;
+    var typeFood;
+    typeFood = document.getElementsByTagName('h5')[0].innerHTML;
 
 function initMap() {
+
+  console.log(typeFood)
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: -34.397, lng: 150.644},
     zoom: 6
@@ -76,13 +81,12 @@ function initMap() {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
-        console.log(pos);
 
       infoWindow.setPosition(pos);
       infoWindow.setContent('Location found.');
       infoWindow.open(map);
       map.setCenter(pos);
-      nextFunction(pos,map);
+      nextFunction(pos,map, typeFood);
 
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
@@ -93,20 +97,19 @@ function initMap() {
   }
 }
 
-function nextFunction(pos,map, ){
+function nextFunction(pos,map, typeFood){
+
   var service = new google.maps.places.PlacesService(map);
-  console.log(pos);
+  console.log(typeFood)
   service.nearbySearch({
     location: pos,
     radius: 5000,
     type: ['restaurant'],
-    keyword: ['Mexican']
+    keyword: [typeFood]
   }, callback);
-  console.log(pos);
 }
 
 function callback(results, status) {
-  console.log("callback");
   if (status == google.maps.places.PlacesServiceStatus.OK) {
     for (var i = 0; i < results.length; i++) {
       createMarker(results[i]);
