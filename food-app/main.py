@@ -72,6 +72,9 @@ class SecondHandler(webapp2.RequestHandler):
                 flavors_string += flavors + ", "
             flavors_string = base_flavor_string + flavors_string[0:-2] + ".<br>"
         #self.response.write("Hello " + name + " you have chosen " + flavors + " and based on your location we have found this place near you, " + places + ", and the amount of your portion is " + portions + ".")
+
+        if flavors in flavors_list:
+            print"Based on the flavor that you picked we recomend you go to a Mexican place."
         logging.info(flavors_list)
 
         context = {
