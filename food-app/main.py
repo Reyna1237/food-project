@@ -87,10 +87,10 @@ class SecondHandler(webapp2.RequestHandler):
             print"Based on the flavor that you picked we recomend you go to a Mexican place."
         logging.info(flavors_list)
         self.response.write(template.render())
-        self.response.write(flavors_string)
-        self.response.write("Your name is: <strong> " + name + "</strong> Your color is: <strong> " + color + "</strong> <br>")
+        self.response.write("<br><br>"+flavors_string)
+        self.response.write("Your name is: <strong> " + name + "</strong> Your favorite color is: <strong> " + color + "</strong> <br>")
 
-        self.response.write("Hello " + name + ", based on your choice in flavors we have found a place that matches what you want, " + places + ", and the amount of your portion is " + portions + ".")
+        self.response.write("Hello " + name + ", based on your choice in flavors we have found a place that matches what you want, " + places + ", and the amount of your portion is " + portions + ".<br><br>")
 
 
 app = webapp2.WSGIApplication([
